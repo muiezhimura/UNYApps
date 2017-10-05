@@ -16,32 +16,27 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    private Button indexPengumuman,indexBerita;
+        implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
+
+    private Button indexPengumuman,indexBerita,home;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         indexPengumuman = (Button) findViewById(R.id.btindexpeng);
-        indexPengumuman.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,IndexPengumuman.class);
-                startActivity(i);
-            }
-        });
-
         indexBerita = (Button) findViewById(R.id.btindexberita);
-        indexBerita.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        home = (Button)findViewById(R.id.bthome);
 
-            }
-        });
+        indexPengumuman.setOnClickListener(this);
+        indexBerita.setOnClickListener(this);
+        home.setOnClickListener(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +46,29 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        Intent i;
+        switch (view.getId()){
+            case R.id.bthome:
+                Intent iH = new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(iH);
+                break;
+
+            case R.id.btindexberita:
+                Intent iB = new Intent(MainActivity.this,IndexBerita.class);
+                startActivity(iB);
+                break;
+            case R.id.btindexpeng:
+                Intent iP = new Intent(MainActivity.this,IndexPengumuman.class);
+                startActivity(iP);
+                break;
+
+
+        }
     }
 
     @Override

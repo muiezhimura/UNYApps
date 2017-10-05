@@ -26,10 +26,10 @@
             android:text="Index Berita" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/bthome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Home" />
 
         <Button
             android:id="@+id/button2"
